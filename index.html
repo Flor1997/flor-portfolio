@@ -4,19 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Florencia Messidoro Saavedra — Data & Analytics</title>
-  <meta name="description" content="Portfolio of Data & Analytics projects and studies by Florencia Messidoro Saavedra" />
+  <meta name="description" content="Portfolio of projects and studies in Data & Analytics by Florencia Messidoro Saavedra" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f1e8;
-      --bg-2: #f0e7db;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #0b2a4a;
-      --accent: #ff6b35;
-      --accent-2: #f06292;
-      --card: #ffffff;
+      /* Palette: light, techy vibes */
+      --bg: #f7f1e8;          /* light beige */
+      --bg-2: #f0e7db;        /* deeper beige */
+      --text: #1f2937;        /* deep blue-gray (legible) */
+      --muted: #6b7280;       /* mid gray */
+      --primary: #0b2a4a;     /* dark blue */
+      --accent: #ff6b35;      /* soft orange */
+      --accent-2: #f06292;    /* pink */
+      --card: #ffffff;        /* white for cards */
       --ring: rgba(11, 42, 74, 0.15);
       --shadow: 0 10px 30px rgba(0,0,0,0.08);
       --radius: 18px;
@@ -31,8 +32,10 @@
       line-height: 1.6;
     }
 
+    /* Layout */
     .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
+    /* Navbar */
     .nav {
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(8px);
@@ -66,6 +69,7 @@
     }
     .btn-primary:hover { filter: brightness(1.05); }
 
+    /* Hero */
     .hero { padding: 48px 24px 12px; }
     .hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
     .hero h2 { font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px; }
@@ -88,6 +92,7 @@
     .hero-card h3 { margin: 0 0 8px; }
     .hero-card p { margin: 0; color: var(--muted); }
 
+    /* Controls */
     .controls { display:flex; flex-wrap:wrap; gap: 10px; align-items:center; margin: 26px 0 14px; }
     .input {
       display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #eadfce; border-radius: 12px;
@@ -98,6 +103,7 @@
     .chip { border:1px solid #eadfce; background:#fff; padding: 8px 10px; border-radius: 999px; cursor:pointer; font-weight:600; }
     .chip.active { background: var(--primary); color:#fff; border-color: transparent; }
 
+    /* Grid */
     .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
     .card {
       background: #fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
@@ -111,6 +117,7 @@
     .tag.blue { background:#eef3ff; border-color:#c9d7ff; color:#0b2a4a; }
     .tag.pink { background:#ffeaf3; border-color:#ffcfe3; color:#8a2353; }
 
+    /* Post view */
     .post-view { display:none; }
     .post-view.active { display:block; }
     .post-header { padding: 10px 0 16px; }
@@ -120,13 +127,16 @@
     .post-content pre { background:#0b2a4a; color:#fff; padding: 12px; border-radius: 12px; overflow:auto; }
     .back { margin: 10px 0 20px; }
 
+    /* Footer */
     footer { margin: 48px 0 24px; color: var(--muted); text-align:center; }
 
+    /* Responsive */
     @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
     @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
   </style>
 </head>
 <body>
+  <!-- NAVBAR -->
   <nav class="nav">
     <div class="nav-inner container">
       <a class="brand" href="#/">
@@ -142,11 +152,12 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero container" id="home">
     <div class="hero-grid">
       <div>
-        <h2>I explore data, tell stories and build evidence-based decisions.</h2>
-        <p>Here I will document my <b>projects</b>, <b>studies</b> and notes on <b>credit risk</b>, <b>analytics</b>, <b>A/B testing</b>, and more. All in a simple, clear and easy-to-navigate space.</p>
+        <h2>I explore data, tell stories, and build evidence-based decisions.</h2>
+        <p>Here I will document my <b>projects</b>, <b>studies</b> and notes on <b>credit risk</b>, <b>analytics</b>, <b>A/B testing</b>, and more. All in a simple, clear, easy-to-navigate hub.</p>
         <div class="pills">
           <span class="pill">SQL</span>
           <span class="pill">Python</span>
@@ -162,24 +173,27 @@
       </div>
       <div class="hero-card">
         <h3>What will you find?</h3>
-        <p>Guided studies, mini-projects, reading notes, useful snippets (SQL/Python) and career reflections. All versioned and public.</p>
+        <p>Guided studies, mini-projects, reading notes, useful snippets (SQL/Python) and career reflections. Everything versioned and public.</p>
       </div>
     </div>
 
+    <!-- CONTROLS -->
     <div class="controls">
       <div class="input" style="flex:1; max-width:520px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21L15.8 15.8M18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <input id="search" type="search" placeholder="Search by title, tag or content..." />
+        <input id="search" type="search" placeholder="Search by title, tag, or content..." />
       </div>
       <button class="btn" id="clearFilters">Clear filters</button>
       <div class="chips" id="chips"></div>
     </div>
   </header>
 
+  <!-- LIST VIEW -->
   <main class="container" id="listView">
     <div class="grid" id="grid"></div>
   </main>
 
+  <!-- POST VIEW -->
   <section class="container post-view" id="postView">
     <button class="btn back" id="backBtn">← Back</button>
     <header class="post-header">
@@ -194,17 +208,23 @@
     Made with ♥ by Florencia — © <span id="year"></span>
   </footer>
 
+  <!-- Dependencies for Markdown rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    const POSTS_INDEX = 'posts/posts.json';
-    const POSTS_BASE  = 'posts/';
 
+  <script>
+    // ---------- CONFIG ----------
+    const POSTS_INDEX = 'posts/posts.json'; // list of posts
+    const POSTS_BASE  = 'posts/';           // folder for .md
+
+    // ---------- STATE ----------
     let POSTS = [];
     let TAGS = new Set();
     let activeTags = new Set();
     let searchTerm = '';
 
+    // ---------- HELPERS ----------
     const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
     const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
 
     function fmtDate(iso){
@@ -252,7 +272,7 @@
         <div class="meta">${fmtDate(p.date)} · ${p.reading_time || '— min'}</div>
         <h4>${p.title}</h4>
         <p class="meta">${p.summary || ''}</p>
-        <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="tags">${(p.tags||[]).map(t=>`<span class=\"tag ${t.match(/sql|python|bigquery/i)?'blue':(t.match(/exper|ab|test/i)?'pink':'')}\">${t}</span>`).join('')}</div>
         <div style="margin-top:12px; display:flex; gap:10px;">
           <button class="btn" data-slug="${p.slug}">Read</button>
           ${p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Repo</a>` : ''}
@@ -266,4 +286,89 @@
     function renderGrid(){
       const grid = $('#grid'); grid.innerHTML = '';
       const items = filtered();
-      items.forEach(p => grid
+      items.forEach(p => grid.appendChild(card(p)));
+      $('#statPosts').textContent = items.length;
+    }
+
+    async function openPost(slug){
+      const mdUrl = `${POSTS_BASE}${slug}.md`;
+      const res = await fetch(mdUrl);
+      const md = await res.text();
+      const post = POSTS.find(p=>p.slug===slug);
+      if(!post) return;
+      $('#postTitle').textContent = post.title;
+      $('#postMeta').textContent = `${fmtDate(post.date)} · ${post.reading_time || ''}`;
+      $('#postTags').innerHTML = (post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      $('#postContent').innerHTML = marked.parse(md);
+      location.hash = `#/post/${slug}`;
+      toggleView('post');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function toggleView(which){
+      if(which === 'post'){
+        $('#listView').style.display = 'none';
+        $('#postView').classList.add('active');
+      } else {
+        $('#postView').classList.remove('active');
+        $('#listView').style.display = '';
+      }
+    }
+
+    function handleHash(){
+      const hash = location.hash.replace('#/','');
+      if(hash.startsWith('post/')){
+        const slug = hash.split('/')[1];
+        openPost(slug);
+      } else if(hash === 'about'){
+        showStatic(
+          'About me',
+          `<p>I'm Florencia Messidoro Saavedra, a <b>Senior Business Analytics Analyst</b> specialized in <b>credit risk</b> and <b>analytics</b>. I love designing clear metrics, experimenting, and translating data into decisions.</p>
+           <ul>
+             <li>SQL (BigQuery), Python (pandas, scikit-learn, matplotlib)</li>
+             <li>A/B testing, product metrics, credit (PD/LGD/EL), BNPL</li>
+             <li>Visualization & storytelling</li>
+           </ul>`
+        );
+      } else if(hash === 'contact'){
+        showStatic(
+          'Contact',
+          `<p>Shall we collaborate? Email me at <a href="mailto:flor@example.com">flor@example.com</a> or find me on <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>.</p>`
+        );
+      } else {
+        toggleView('list');
+      }
+    }
+
+    function showStatic(title, html){
+      $('#postTitle').textContent = title;
+      $('#postMeta').textContent = '';
+      $('#postTags').innerHTML = '';
+      $('#postContent').innerHTML = html;
+      toggleView('post');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // ---------- INIT ----------
+    async function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      $('#backBtn').onclick = () => { history.back(); setTimeout(()=>toggleView('list'), 50); };
+      $('#clearFilters').onclick = () => { activeTags.clear(); searchTerm=''; $('#search').value=''; renderChips(); renderGrid(); };
+      $('#search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
+
+      const res = await fetch(POSTS_INDEX);
+      POSTS = await res.json();
+      POSTS.forEach(p=>{ p.slug = p.slug || slugify(p.title); (p.tags||[]).forEach(t=>TAGS.add(t)); });
+      renderChips();
+      renderGrid();
+      handleHash();
+      window.addEventListener('hashchange', handleHash);
+    }
+
+    init().catch(err => {
+      console.error(err);
+      $('#grid').innerHTML = `<div class="card"><b>Couldn't load posts</b><p class="meta">Check that <code>${POSTS_INDEX}</code> exists and the .md files live in <code>${POSTS_BASE}</code>.</p></div>`;
+    });
+  </script>
+</body>
+</html>
