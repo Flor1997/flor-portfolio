@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Análisis de sentiment en tweets sobre Nike",
+    "slug": "sentiment-nike",
+    "date": "2025-08-30",
+    "reading_time": "6 min",
+    "summary": "Pipeline simple con TextBlob para clasificar pro/neutral/anti y visualización básica.",
+    "tags": ["Python", "NLP", "Experimentación"],
+    "repo": "https://github.com/tu-usuario/sentiment-nike"
+  },
+  {
+    "title": "Consulta BigQuery: último añomes completo con QUALIFY",
+    "slug": "ultimomes-bq-qualify",
+    "date": "2025-08-18",
+    "reading_time": "4 min",
+    "summary": "Snippet para comparar por añomes y quedarme con el último período completo usando QUALIFY.",
+    "tags": ["SQL", "BigQuery"]
+  },
+  {
+    "title": "AB Testing 101: métricas, power y pitfalls",
+    "slug": "ab-testing-101",
+    "date": "2025-07-22",
+    "reading_time": "8 min",
+    "summary": "Mi checklist práctico para diseñar y analizar experimentos en producto.",
+    "tags": ["Experimentación", "Producto", "Métricas"]
+  }
+]
