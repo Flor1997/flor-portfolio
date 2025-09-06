@@ -141,6 +141,21 @@
     /* Responsive */
     @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
     @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
+
+    /* lock navbar height and alignment */
+    .nav-inner { min-height: 64px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+
+    /* avoid hover bump on the navbar button */
+    .nav .btn:hover { transform: none; }
+
+    /* keep logo from nudging layout */
+    .logo-img { width: 32px; height: 32px; object-fit: contain; display: block; }
+
+    /* keep vertical scrollbar reserved to prevent layout shift */
+    html { overflow-y: scroll; }
+
+
   </style>
 </head>
 <body>
@@ -314,12 +329,15 @@
     }
 
     function toggleView(which){
+      const hero = document.querySelector('.hero');
       if(which === 'post'){
-        $('#listView').style.display = 'none';
-        $('#postView').classList.add('active');
+        document.getElementById('listView').style.display = 'none';
+        document.getElementById('postView').classList.add('active');
+        if (hero) hero.style.display = 'none';
       } else {
-        $('#postView').classList.remove('active');
-        $('#listView').style.display = '';
+        document.getElementById('postView').classList.remove('active');
+        document.getElementById('listView').style.display = '';
+        if (hero) hero.style.display = '';
       }
     }
 
