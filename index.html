@@ -72,8 +72,35 @@
     }
 
     /* Controls */
-    .controls { display:flex; gap: 10px; align-items:center; margin: 26px 0 14px; }
-    select { padding: 10px; border-radius: 12px; border:1px solid #eadfce; font-size:14px; }
+    .controls { display:flex; gap: 12px; align-items:center; margin: 26px 0 14px; flex-wrap: wrap; }
+    select, input[type="search"] {
+      border:1px solid #eadfce;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size:14px;
+      background:#fff;
+      color:var(--text);
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+    select:hover, input[type="search"]:hover {
+      border-color: var(--primary);
+    }
+    select:focus, input[type="search"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+    /* flechita custom */
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%231f2937' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 36px;
+      cursor:pointer;
+    }
 
     /* Grid */
     .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
