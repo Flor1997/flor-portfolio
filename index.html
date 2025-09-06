@@ -1,102 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Florencia · Data & Analytics</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900">
-    <div class="max-w-5xl mx-auto px-4 py-10 space-y-12">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florencia Messidoro Saavedra — Data & Analytics</title>
+  <meta name="description" content="Portfolio of projects and studies in Data & Analytics by Florencia Messidoro Saavedra" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logofinal.png" />
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --bg-2: #f0e7db;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #0b2a4a;
+      --accent: #ff6b35;
+      --accent-2: #f06292;
+      --card: #ffffff;
+      --ring: rgba(11, 42, 74, 0.15);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
 
-      <!-- HERO / INTRO -->
-      <section class="text-center space-y-4">
-        <h1 class="text-3xl md:text-4xl font-bold">
-          I explore data, tell stories, and build evidence-based decisions.
-        </h1>
-        <p class="text-gray-600 max-w-2xl mx-auto">
-          Here I document my <strong>projects</strong>, <strong>studies</strong> and notes on 
-          <strong> credit risk, analytics, A/B testing</strong>, and more.
-        </p>
-      </section>
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), var(--bg-2));
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-      <!-- WHAT WILL YOU FIND -->
-      <section class="bg-gradient-to-r from-pink-50 via-indigo-50 to-yellow-50 rounded-2xl shadow-md p-6">
-        <h2 class="text-xl font-semibold mb-2">What will you find?</h2>
-        <p class="text-gray-700">
-          Guided studies, mini-projects, reading notes, useful snippets (SQL/Python), 
-          and career reflections.
-        </p>
-      </section>
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
-      <!-- FILTERS -->
-      <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
-        <!-- Dropdown -->
-        <div class="relative w-full md:w-48">
-          <select class="appearance-none bg-white border border-gray-200 rounded-xl py-2 pl-3 pr-8 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-300 w-full">
-            <option>All topics</option>
-            <option>Credit Risk</option>
-            <option>Analytics</option>
-            <option>A/B Testing</option>
-          </select>
-          <!-- Flechita alineada -->
-          <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-gray-600">
-            ▼
-          </span>
-        </div>
+    /* Navbar */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 75%, #fff 25%);
+      border-bottom: 1px solid #eadfce;
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 24px; min-height:64px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .logo-img { width: 32px; height: 32px; object-fit: contain; display:block; }
+    .brand h1 { font-size: 18px; margin:0; letter-spacing:0.3px; }
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .link { text-decoration:none; color: var(--primary); font-weight:600; padding:8px 12px; border-radius:10px; }
+    .link:hover { background: #efe5d8; }
+    .btn {
+      appearance:none; border:1px solid #e9dcca; background: #fff; color: var(--primary);
+      padding: 10px 14px; border-radius: 12px; font-weight:700; cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), #153e6d); color:#fff; border:none; }
+    .btn-primary:hover { filter: brightness(1.05); }
 
-        <!-- Search bar -->
-        <div class="relative flex-1">
-          <input
-            type="text"
-            placeholder="Search by title, tag, or content..."
-            class="w-full border border-gray-200 rounded-xl py-2 pl-3 pr-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-          />
-          <!-- Lupa alineada -->
-          <span class="absolute inset-y-0 right-3 flex items-center text-gray-500 pointer-events-none">
-            🔍
-          </span>
+    /* Hero */
+    .hero { padding: 48px 24px 12px; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
+    .hero h2 { font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px; }
+    .hero p { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+    .stats { display:flex; gap:18px; flex-wrap:wrap; margin-top: 18px; }
+    .stat { background:#fff; border:1px solid #eadfce; border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); }
+    .stat b { font-size: 18px; }
+    .hero-card {
+      background: radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
+                  radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.2), transparent 60%),
+                  #fff;
+      border:1px solid #eadfce; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+
+    /* Controls */
+    .controls { display:flex; gap: 10px; align-items:center; margin: 26px 0 14px; }
+    select { padding: 10px; border-radius: 12px; border:1px solid #eadfce; font-size:14px; }
+
+    /* Grid */
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    .card { background:#fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+    .card h4 { margin: 6px 0 6px; font-size: 18px; }
+
+    /* About Me */
+    .about-grid { display:grid; grid-template-columns: 0.8fr 1.2fr; gap:28px; align-items:center; margin-top:64px; margin-bottom:64px; }
+    .about-img { width:220px; height:220px; border-radius:50%; object-fit:cover; box-shadow: var(--shadow); }
+    .about-links { margin-top:16px; display:flex; gap:12px; }
+    @media (max-width: 780px) {
+      .about-grid { grid-template-columns: 1fr; text-align:center; }
+      .about-img { margin:0 auto; }
+    }
+
+    footer { margin: 48px 0 24px; color: var(--muted); text-align:center; }
+    html { overflow-y: scroll; }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner container">
+      <a class="brand" href="#/">
+        <img src="assets/logofinal.png" alt="Flor Logo" class="logo-img">
+        <h1>Florencia · Data & Analytics</h1>
+      </a>
+      <div class="nav-actions">
+        <a class="link" href="#/">Home</a>
+        <a class="link" href="https://www.linkedin.com/in/tu-linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="#/contact">Contact</a>
+        <a class="btn btn-primary" id="cvBtn" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero container" id="home">
+    <div class="hero-grid">
+      <div>
+        <h2>I explore data, tell stories, and build evidence-based decisions.</h2>
+        <p>Here I will document my <b>projects</b>, <b>studies</b> and notes on <b>credit risk</b>, <b>analytics</b>, <b>A/B testing</b>, and more.</p>
+        <div class="stats">
+          <div class="stat"><b id="statPosts">0</b><div>Posts</div></div>
+          <div class="stat"><b id="statTags">0</b><div>Topics</div></div>
         </div>
       </div>
-
-      <!-- POSTS -->
-      <section class="grid md:grid-cols-3 gap-6">
-        <!-- Post 1 -->
-        <div class="bg-white rounded-2xl shadow-md p-4">
-          <p class="text-sm text-gray-500">30 Aug 2025 · 6 min</p>
-          <h3 class="font-semibold mt-1">Sentiment Analysis on Nike Tweets</h3>
-          <p class="text-gray-600 text-sm mt-2">
-            Simple pipeline with TextBlob to classify pro/neutral/anti and basic visualization.
-          </p>
-        </div>
-        <!-- Post 2 -->
-        <div class="bg-white rounded-2xl shadow-md p-4">
-          <p class="text-sm text-gray-500">18 Aug 2025 · 4 min</p>
-          <h3 class="font-semibold mt-1">BigQuery Query: Last Full YearMonth with QUALIFY</h3>
-          <p class="text-gray-600 text-sm mt-2">
-            Snippet to compare by yearmonth and keep the last complete period using QUALIFY.
-          </p>
-        </div>
-        <!-- Post 3 -->
-        <div class="bg-white rounded-2xl shadow-md p-4">
-          <p class="text-sm text-gray-500">22 Jul 2025 · 8 min</p>
-          <h3 class="font-semibold mt-1">AB Testing 101: Metrics, Power and Pitfalls</h3>
-          <p class="text-gray-600 text-sm mt-2">
-            My practical checklist for designing and analyzing product experiments.
-          </p>
-        </div>
-      </section>
-
-      <!-- ABOUT ME (abajo en Home) -->
-      <section class="bg-gradient-to-r from-indigo-50 via-pink-50 to-yellow-50 rounded-2xl shadow-md p-6">
-        <h2 class="text-xl font-semibold mb-2">About Me</h2>
-        <p class="text-gray-700">
-          I’m Florencia, a Credit Risk & Analytics professional passionate about 
-          turning data into insights. I explore SQL, Python, A/B Testing, and 
-          storytelling with data, always aiming for impact.
-        </p>
-      </section>
+      <div class="hero-card">
+        <h3>What will you find?</h3>
+        <p>Guided studies, mini-projects, reading notes, useful snippets (SQL/Python) and career reflections.</p>
+      </div>
     </div>
-  </body>
-</html>
 
+    <!-- CONTROLS -->
+    <div class="controls">
+      <select id="tagFilter">
+        <option value="">All topics</option>
+      </select>
+      <input id="search" type="search" placeholder="Search..." />
+    </div>
+  </header>
+
+  <!-- LIST VIEW -->
+  <main class="container" id="listView">
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="container about">
+    <div class="about-grid">
+      <img src="assets/foto-flor.jpg" alt="Florencia Messidoro Saavedra" class="about-img">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi! I'm <b>Florencia Messidoro Saavedra</b>, a Senior Business Analytics Analyst specialized in <b>credit risk</b> and <b>analytics</b>. I love turning data into decisions, experimenting, and designing clear metrics.</p>
+        <p>I studied <b>Economics</b> and later a <b>Master in Management & Analytics</b>. My career has focused on fintech and credit, working on acquisition, portfolio strategies, and A/B testing.</p>
+        <p>Currently based in London 🌍, I’m passionate about projects that combine analytics with social impact, and I’m always eager to learn and collaborate.</p>
+        <div class="about-links">
+          <a href="cv/Florencia_Messidoro_Saavedra_CV.pdf" class="btn">Download CV</a>
+          <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Made with ♥ by Florencia — © <span id="year"></span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const POSTS_INDEX = 'posts/posts.json';
+    const POSTS_BASE  = 'posts/';
+    let POSTS = []; let TAGS = new Set(); let searchTerm = ''; let activeTag = '';
+
+    const $ = (sel) => document.querySelector(sel);
+    const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+
+    function fmtDate(iso){
+      try { const d = new Date(iso); return d.toLocaleDateString('en-GB', { year:'numeric', month:'short', day:'numeric' }); } catch(e){ return iso; }
+    }
+
+    function filtered(){
+      const q = searchTerm.trim().toLowerCase();
+      return POSTS.filter(p => {
+        const matchesTag = !activeTag || p.tags.includes(activeTag);
+        const haystack = (p.title + ' ' + p.summary + ' ' + (p.tags||[]).join(' ')).toLowerCase();
+        const matchesSearch = q === '' || haystack.includes(q);
+        return matchesTag && matchesSearch;
+      }).sort((a,b)=> new Date(b.date) - new Date(a.date));
+    }
+
+    function card(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.innerHTML = `
+        <div class="meta">${fmtDate(p.date)} · ${p.reading_time || '— min'}</div>
+        <h4>${p.title}</h4>
+        <p class="meta">${p.summary || ''}</p>
+      `;
+      return el;
+    }
+
+    function renderGrid(){
+      const grid = $('#grid'); grid.innerHTML = '';
+      const items = filtered();
+      items.forEach(p => grid.appendChild(card(p)));
+      $('#statPosts').textContent = items.length;
+      $('#statTags').textContent = TAGS.size;
+    }
+
+    async function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const res = await fetch(POSTS_INDEX); POSTS = await res.json();
+      POSTS.forEach(p=>{ p.slug = p.slug || slugify(p.title); (p.tags||[]).forEach(t=>TAGS.add(t)); });
+      TAGS.forEach(t => {
+        const opt = document.createElement('option'); opt.value = t; opt.textContent = t;
+        $('#tagFilter').appendChild(opt);
+      });
+      $('#search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
+      $('#tagFilter').addEventListener('change', (e)=>{ activeTag = e.target.value; renderGrid(); });
+      renderGrid();
+    }
+
+    init();
+  </script>
+</body>
+</html>
