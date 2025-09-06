@@ -44,7 +44,11 @@
       border-bottom: 1px solid #eadfce;
     }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 24px; }
-    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+
+    .brand { text-decoration:none; color:inherit; flex: 1 1 auto; }
+    .brand-inner { display:inline-flex; align-items:center; gap:12px; }
+    .brand-text { font-size:18px; font-weight:600; line-height:1; letter-spacing:.3px; }
+
     .logo { /* old gradient logo (unused now, can keep or remove) */
       width:36px; height:36px; border-radius:12px;
       background: conic-gradient(from 200deg, var(--accent), var(--accent-2), var(--primary));
@@ -53,12 +57,12 @@
     }
     /* NEW: real image logo */
     .logo-img {
-      width: 32px;   /* adjust to 24px if you want it smaller */
+      width: 32px;   /* ajustá a 28px o 24px si lo querés más chico */
       height: 32px;
       object-fit: contain;
       display: block;
+      flex: 0 0 32px;
     }
-    .brand h1 { font-size: 18px; margin:0; letter-spacing:0.3px; }
 
     .nav-actions { display:flex; align-items:center; gap:10px; }
     .link { text-decoration:none; color: var(--primary); font-weight:600; padding:8px 12px; border-radius:10px; }
@@ -68,8 +72,12 @@
       appearance:none; border:1px solid #e9dcca; background: #fff; color: var(--primary);
       padding: 10px 14px; border-radius: 12px; font-weight:700; cursor:pointer;
       box-shadow: var(--shadow);
+      transition: transform .15s ease;
     }
     .btn:hover { transform: translateY(-1px); }
+    /* Evitar que el botón de navbar “salte” */
+    .nav .btn:hover { transform: none; }
+
     .btn:focus { outline: 3px solid var(--ring); }
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), #153e6d);
@@ -142,19 +150,9 @@
     @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
     @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
 
-    /* lock navbar height and alignment */
+    /* --- Navbar layout hardening & no layout shift --- */
     .nav-inner { min-height: 64px; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-
-    /* avoid hover bump on the navbar button */
-    .nav .btn:hover { transform: none; }
-
-    /* keep logo from nudging layout */
-    .logo-img { width: 32px; height: 32px; object-fit: contain; display: block; }
-
-    /* keep vertical scrollbar reserved to prevent layout shift */
-    html { overflow-y: scroll; }
-
+    html { overflow-y: scroll; } /* reservar scroll vertical */
 
   </style>
 </head>
@@ -163,8 +161,10 @@
   <nav class="nav">
     <div class="nav-inner container">
       <a class="brand" href="#/">
-        <img src="assets/logofinal.png" alt="Flor Logo" class="logo-img">
-        <h1>Florencia · Data & Analytics</h1>
+        <span class="brand-inner">
+          <img src="assets/logofinal.png" alt="Flor Logo" class="logo-img">
+          <span class="brand-text">Florencia · Data & Analytics</span>
+        </span>
       </a>
       <div class="nav-actions">
         <a class="link" href="#/">Home</a>
@@ -307,10 +307,10 @@
     }
 
     function renderGrid(){
-      const grid = $('#grid'); grid.innerHTML = '';
+      const grid = document.getElementById('grid'); grid.innerHTML = '';
       const items = filtered();
       items.forEach(p => grid.appendChild(card(p)));
-      $('#statPosts').textContent = items.length;
+      document.getElementById('statPosts').textContent = items.length;
     }
 
     async function openPost(slug){
@@ -319,10 +319,10 @@
       const md = await res.text();
       const post = POSTS.find(p=>p.slug===slug);
       if(!post) return;
-      $('#postTitle').textContent = post.title;
-      $('#postMeta').textContent = `${fmtDate(post.date)} · ${post.reading_time || ''}`;
-      $('#postTags').innerHTML = (post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
-      $('#postContent').innerHTML = marked.parse(md);
+      document.getElementById('postTitle').textContent = post.title;
+      document.getElementById('postMeta').textContent = `${fmtDate(post.date)} · ${post.reading_time || ''}`;
+      document.getElementById('postTags').innerHTML = (post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      document.getElementById('postContent').innerHTML = marked.parse(md);
       location.hash = `#/post/${slug}`;
       toggleView('post');
       window.scrollTo({top:0, behavior:'smooth'});
@@ -367,10 +367,10 @@
     }
 
     function showStatic(title, html){
-      $('#postTitle').textContent = title;
-      $('#postMeta').textContent = '';
-      $('#postTags').innerHTML = '';
-      $('#postContent').innerHTML = html;
+      document.getElementById('postTitle').textContent = title;
+      document.getElementById('postMeta').textContent = '';
+      document.getElementById('postTags').innerHTML = '';
+      document.getElementById('postContent').innerHTML = html;
       toggleView('post');
       window.scrollTo({top:0, behavior:'smooth'});
     }
@@ -378,9 +378,9 @@
     // ---------- INIT ----------
     async function init(){
       document.getElementById('year').textContent = new Date().getFullYear();
-      $('#backBtn').onclick = () => { history.back(); setTimeout(()=>toggleView('list'), 50); };
-      $('#clearFilters').onclick = () => { activeTags.clear(); searchTerm=''; $('#search').value=''; renderChips(); renderGrid(); };
-      $('#search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
+      document.getElementById('backBtn').onclick = () => { history.back(); setTimeout(()=>toggleView('list'), 50); };
+      document.getElementById('clearFilters').onclick = () => { activeTags.clear(); searchTerm=''; document.getElementById('search').value=''; renderChips(); renderGrid(); };
+      document.getElementById('search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
 
       const res = await fetch(POSTS_INDEX);
       POSTS = await res.json();
@@ -393,7 +393,7 @@
 
     init().catch(err => {
       console.error(err);
-      $('#grid').innerHTML = `<div class="card"><b>Couldn't load posts</b><p class="meta">Check that <code>${POSTS_INDEX}</code> exists and the .md files live in <code>${POSTS_BASE}</code>.</p></div>`;
+      document.getElementById('grid').innerHTML = `<div class="card"><b>Couldn't load posts</b><p class="meta">Check that <code>${POSTS_INDEX}</code> exists and the .md files live in <code>${POSTS_BASE}</code>.</p></div>`;
     });
   </script>
 </body>
