@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florencia Messidoro Saavedra — Data & Analytics</title>
+  <meta name="description" content="Portfolio de proyectos y estudios en Data & Analytics de Florencia Messidoro Saavedra" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Palette: light, techy vibes */
+      --bg: #f7f1e8;          /* beige claro */
+      --bg-2: #f0e7db;        /* beige más intenso */
+      --text: #1f2937;        /* gris-azulado profundo (legible) */
+      --muted: #6b7280;       /* gris medio */
+      --primary: #0b2a4a;     /* azul oscuro */
+      --accent: #ff6b35;      /* naranja suave */
+      --accent-2: #f06292;    /* rosa */
+      --card: #ffffff;        /* blanco para tarjetas */
+      --ring: rgba(11, 42, 74, 0.15);
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), var(--bg-2));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+    /* Navbar */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 75%, #fff 25%);
+      border-bottom: 1px solid #eadfce;
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 24px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .logo {
+      width:36px; height:36px; border-radius:12px;
+      background: conic-gradient(from 200deg, var(--accent), var(--accent-2), var(--primary));
+      box-shadow: inset 0 0 0 3px #fff, var(--shadow);
+      border: 1px solid #e9dcca;
+    }
+    .brand h1 { font-size: 18px; margin:0; letter-spacing:0.3px; }
+
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .link { text-decoration:none; color: var(--primary); font-weight:600; padding:8px 12px; border-radius:10px; }
+    .link:hover { background: #efe5d8; }
+
+    .btn {
+      appearance:none; border:1px solid #e9dcca; background: #fff; color: var(--primary);
+      padding: 10px 14px; border-radius: 12px; font-weight:700; cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus { outline: 3px solid var(--ring); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #153e6d);
+      color:#fff; border:none;
+    }
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    /* Hero */
+    .hero { padding: 48px 24px 12px; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
+    .hero h2 { font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px; }
+    .hero p { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+    .pills { display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .pill {
+      font-size: 12px; font-weight:700; letter-spacing:0.3px; text-transform:uppercase;
+      padding: 8px 10px; border-radius: 999px; border:1px solid #eadfce; background:#fff;
+    }
+    .stats { display:flex; gap:18px; flex-wrap:wrap; margin-top: 18px; }
+    .stat { background:#fff; border:1px solid #eadfce; border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); }
+    .stat b { font-size: 18px; }
+
+    .hero-card {
+      background: radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
+                  radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.2), transparent 60%),
+                  #fff;
+      border:1px solid #eadfce; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+    .hero-card h3 { margin: 0 0 8px; }
+    .hero-card p { margin: 0; color: var(--muted); }
+
+    /* Controls */
+    .controls { display:flex; flex-wrap:wrap; gap: 10px; align-items:center; margin: 26px 0 14px; }
+    .input {
+      display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #eadfce; border-radius: 12px;
+      padding: 10px 12px; min-width: 260px; box-shadow: var(--shadow);
+    }
+    .input input { border:none; outline:none; width:100%; font-size:14px; background:transparent; color:var(--text); }
+    .chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip { border:1px solid #eadfce; background:#fff; padding: 8px 10px; border-radius: 999px; cursor:pointer; font-weight:600; }
+    .chip.active { background: var(--primary); color:#fff; border-color: transparent; }
+
+    /* Grid */
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    .card {
+      background: #fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,.1); }
+    .card h4 { margin: 6px 0 6px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .tag { background: #fff7f0; border:1px dashed #ffd6bd; color:#8b3a16; font-weight:700; padding:6px 8px; border-radius: 999px; font-size:12px; }
+    .tag.blue { background:#eef3ff; border-color:#c9d7ff; color:#0b2a4a; }
+    .tag.pink { background:#ffeaf3; border-color:#ffcfe3; color:#8a2353; }
+
+    /* Post view */
+    .post-view { display:none; }
+    .post-view.active { display:block; }
+    .post-header { padding: 10px 0 16px; }
+    .post-header h2 { font-size: 32px; margin: 6px 0; }
+    .post-content { background:#fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .post-content img { max-width: 100%; border-radius: 12px; }
+    .post-content pre { background:#0b2a4a; color:#fff; padding: 12px; border-radius: 12px; overflow:auto; }
+    .back { margin: 10px 0 20px; }
+
+    /* Footer */
+    footer { margin: 48px 0 24px; color: var(--muted); text-align:center; }
+
+    /* Responsive */
+    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner container">
+      <a class="brand" href="#/">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Florencia · Data & Analytics</h1>
+      </a>
+      <div class="nav-actions">
+        <a class="link" href="#/">Inicio</a>
+        <a class="link" href="#/about">Sobre mí</a>
+        <a class="link" href="#/contact">Contacto</a>
+        <a class="btn btn-primary" id="cvBtn" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Descargar CV</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero container" id="home">
+    <div class="hero-grid">
+      <div>
+        <h2>Exploro datos, cuento historias y construyo decisiones con evidencia.</h2>
+        <p>Acá documentaré mis <b>proyectos</b>, <b>estudios</b> y apuntes sobre <b>riesgo crediticio</b>, <b>analytics</b>, <b>AB testing</b>, y más. Todo en un lugar simple, claro y fácil de navegar.</p>
+        <div class="pills">
+          <span class="pill">SQL</span>
+          <span class="pill">Python</span>
+          <span class="pill">BigQuery</span>
+          <span class="pill">Credit Risk</span>
+          <span class="pill">Experimentación</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="statPosts">0</b><div>Posts</div></div>
+          <div class="stat"><b id="statTags">0</b><div>Temas</div></div>
+          <div class="stat"><b>Claro</b><div>Modo</div></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>¿Qué vas a encontrar?</h3>
+        <p>Estudios guiados, mini-proyectos, notas de lectura, snippets útiles (SQL/Python) y reflexiones de carrera. Todo versionado y público.</p>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls">
+      <div class="input" style="flex:1; max-width:520px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21L15.8 15.8M18 11C18 14.866 14.866 18 11 18C7.13401 18 4 14.866 4 11C4 7.13401 7.13401 4 11 4C14.866 4 18 7.13401 18 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input id="search" type="search" placeholder="Buscar por título, tag o contenido..." />
+      </div>
+      <button class="btn" id="clearFilters">Limpiar filtros</button>
+      <div class="chips" id="chips"></div>
+    </div>
+  </header>
+
+  <!-- LIST VIEW -->
+  <main class="container" id="listView">
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <!-- POST VIEW -->
+  <section class="container post-view" id="postView">
+    <button class="btn back" id="backBtn">← Volver</button>
+    <header class="post-header">
+      <div class="tags" id="postTags"></div>
+      <h2 id="postTitle">Título</h2>
+      <div class="meta" id="postMeta"></div>
+    </header>
+    <article class="post-content" id="postContent">Cargando…</article>
+  </section>
+
+  <footer>
+    Hecho con ♥ por Florencia — © <span id="year"></span>
+  </footer>
+
+  <!-- Dependencies for Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    // ---------- CONFIG ----------
+    const POSTS_INDEX = 'posts/posts.json'; // listado de posts
+    const POSTS_BASE  = 'posts/';           // carpeta de .md
+
+    // ---------- STATE ----------
+    let POSTS = [];
+    let TAGS = new Set();
+    let activeTags = new Set();
+    let searchTerm = '';
+
+    // ---------- HELPERS ----------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+    const slugify = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+
+    function fmtDate(iso){
+      try { const d = new Date(iso); return d.toLocaleDateString('es-AR', { year:'numeric', month:'short', day:'numeric' }); } catch(e){ return iso; }
+    }
+
+    function chipEl(tag){
+      const el = document.createElement('button');
+      el.className = 'chip';
+      el.textContent = tag;
+      el.onclick = () => { toggleTag(tag); };
+      return el;
+    }
+
+    function toggleTag(tag){
+      if(activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag);
+      renderChips();
+      renderGrid();
+    }
+
+    function renderChips(){
+      const chips = $('#chips'); chips.innerHTML = '';
+      Array.from(TAGS).sort().forEach(t => {
+        const el = chipEl(t);
+        if(activeTags.has(t)) el.classList.add('active');
+        chips.appendChild(el);
+      });
+      $('#statTags').textContent = TAGS.size;
+    }
+
+    function filtered(){
+      const q = searchTerm.trim().toLowerCase();
+      return POSTS.filter(p => {
+        const matchesTags = activeTags.size === 0 || p.tags.some(t => activeTags.has(t));
+        const haystack = (p.title + ' ' + p.summary + ' ' + (p.tags||[]).join(' ') + ' ' + (p.keywords||'')).toLowerCase();
+        const matchesSearch = q === '' || haystack.includes(q);
+        return matchesTags && matchesSearch;
+      }).sort((a,b)=> new Date(b.date) - new Date(a.date));
+    }
+
+    function card(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.innerHTML = `
+        <div class="meta">${fmtDate(p.date)} · ${p.reading_time || '— min'}</div>
+        <h4>${p.title}</h4>
+        <p class="meta">${p.summary || ''}</p>
+        <div class="tags">${(p.tags||[]).map(t=>`<span class="tag ${t.match(/sql|python|bigquery/i)?'blue':(t.match(/exper|ab|test/i)?'pink':'')}">${t}</span>`).join('')}</div>
+        <div style="margin-top:12px; display:flex; gap:10px;">
+          <button class="btn" data-slug="${p.slug}">Leer</button>
+          ${p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Repo</a>` : ''}
+          ${p.demo ? `<a class="btn" href="${p.demo}" target="_blank" rel="noopener">Demo</a>` : ''}
+        </div>
+      `;
+      el.querySelector('[data-slug]')?.addEventListener('click', () => openPost(p.slug));
+      return el;
+    }
+
+    function renderGrid(){
+      const grid = $('#grid'); grid.innerHTML = '';
+      const items = filtered();
+      items.forEach(p => grid.appendChild(card(p)));
+      $('#statPosts').textContent = items.length;
+    }
+
+    async function openPost(slug){
+      const mdUrl = `${POSTS_BASE}${slug}.md`;
+      const res = await fetch(mdUrl);
+      const md = await res.text();
+      const post = POSTS.find(p=>p.slug===slug);
+      if(!post) return;
+      $('#postTitle').textContent = post.title;
+      $('#postMeta').textContent = `${fmtDate(post.date)} · ${post.reading_time || ''}`;
+      $('#postTags').innerHTML = (post.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      $('#postContent').innerHTML = marked.parse(md);
+      location.hash = `#/post/${slug}`;
+      toggleView('post');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function toggleView(which){
+      if(which === 'post'){
+        $('#listView').style.display = 'none';
+        $('#postView').classList.add('active');
+      } else {
+        $('#postView').classList.remove('active');
+        $('#listView').style.display = '';
+      }
+    }
+
+    function handleHash(){
+      const hash = location.hash.replace('#/','');
+      if(hash.startsWith('post/')){
+        const slug = hash.split('/')[1];
+        openPost(slug);
+      } else if(hash === 'about'){
+        showStatic(
+          'Sobre mí',
+          `<p>Soy Florencia Messidoro Saavedra, <b>Senior Business Analytics Analyst</b> especializada en <b>riesgo crediticio</b> y <b>analytics</b>. Me apasiona diseñar métricas claras, experimentar y traducir datos en decisiones.</p>
+           <ul>
+             <li>SQL (BigQuery), Python (pandas, scikit-learn, matplotlib)</li>
+             <li>AB testing, métricas de producto, crédito (PD/LGD/EL), BNPL</li>
+             <li>Visualización y storytelling</li>
+           </ul>`
+        );
+      } else if(hash === 'contact'){
+        showStatic(
+          'Contacto',
+          `<p>¿Colaboramos? Escribime por <a href="mailto:flor@example.com">email</a> o en <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>.</p>`
+        );
+      } else {
+        toggleView('list');
+      }
+    }
+
+    function showStatic(title, html){
+      $('#postTitle').textContent = title;
+      $('#postMeta').textContent = '';
+      $('#postTags').innerHTML = '';
+      $('#postContent').innerHTML = html;
+      toggleView('post');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // ---------- INIT ----------
+    async function init(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      $('#backBtn').onclick = () => { history.back(); setTimeout(()=>toggleView('list'), 50); };
+      $('#clearFilters').onclick = () => { activeTags.clear(); searchTerm=''; $('#search').value=''; renderChips(); renderGrid(); };
+      $('#search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
+
+      const res = await fetch(POSTS_INDEX);
+      POSTS = await res.json();
+      POSTS.forEach(p=>{ p.slug = p.slug || slugify(p.title); (p.tags||[]).forEach(t=>TAGS.add(t)); });
+      renderChips();
+      renderGrid();
+      handleHash();
+      window.addEventListener('hashchange', handleHash);
+    }
+
+    init().catch(err => {
+      console.error(err);
+      $('#grid').innerHTML = `<div class="card"><b>No pude cargar los posts</b><p class="meta">Revisá que exista <code>${POSTS_INDEX}</code> y los .md dentro de <code>${POSTS_BASE}</code>.</p></div>`;
+    });
+  </script>
+</body>
+</html>
