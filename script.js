@@ -115,6 +115,13 @@ async function init(){
   renderGrid();
   handleHash();
   window.addEventListener('hashchange', handleHash);
+  if (POSTS.length > 0) {
+    const latest = POSTS.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+    const latestBtn = document.getElementById('latestPostBtn');
+    if (latestBtn) {
+      latestBtn.href = `#/post/${latest.slug}`;
+    }
+  }
 }
 
 init();
