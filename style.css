@@ -148,12 +148,12 @@ html { overflow-y: scroll; }
 
 /* Latest post card */
 .latest-post-card {
-  background: radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.12), transparent 60%),
-              radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
-              #fff0f5;
+  background: radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
+              radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.2), transparent 60%),
+              #fff;
   border: 1px solid #eadfce;
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 18px;
   box-shadow: var(--shadow);
   margin-top: 16px;
 }
