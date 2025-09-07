@@ -60,14 +60,44 @@ body {
 }
 
 /* Controls */
-.controls { display:flex; gap: 10px; align-items:center; margin: 26px 0 14px; }
-select, .input input {
+.controls { 
+  display:flex; 
+  gap: 10px; 
+  align-items:center; 
+  margin: 26px 0 14px; 
+}
+
+.input { flex:1; }
+
+select {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border:1px solid #eadfce;
+  font-size:14px;
+  background: #fff;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  cursor:pointer;
+  
+  /* quita la flecha fea */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* agrega tu propia flechita sutil */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  padding-right: 36px; /* espacio para la flecha */
+}
+
+.input input {
   padding: 10px 14px;
   border-radius: 12px;
   border:1px solid #eadfce;
   font-size:14px;
 }
-.input { flex:1; }
 
 /* Grid */
 .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
