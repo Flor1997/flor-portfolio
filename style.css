@@ -106,10 +106,13 @@ select {
   background-size: 16px 16px;
   padding-right: 36px;
 }
+
 input[type="search"] {
   flex: 1;
-  min-width: 200px; /* evita que se corte el placeholder */
+  min-width: 260px; /* 👈 asegura que la palabra "content" entre bien */
+  max-width: 100%;  /* para que no se rompa en pantallas chicas */
 }
+
 
 /* Grid */
 .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
