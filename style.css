@@ -1,99 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Florencia Messidoro Saavedra — Data & Analytics</title>
-  <meta name="description" content="Portfolio of projects and studies in Data & Analytics by Florencia Messidoro Saavedra" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/logofinal.png" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- NAVBAR -->
-  <nav class="nav">
-    <div class="nav-inner container">
-      <a class="brand" href="#/">
-        <img src="assets/logofinal.png" alt="Flor Logo" class="logo-img">
-        <h1>Florencia · Data & Analytics</h1>
-      </a>
-      <div class="nav-actions">
-        <a class="link" href="#/">Home</a>
-        <a class="link" href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="link" href="#/contact">Contact</a>
-        <a class="btn btn-primary" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
-      </div>
-    </div>
-  </nav>
+:root {
+  --bg: #f7f1e8;
+  --bg-2: #f0e7db;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #0b2a4a;
+  --accent: #ff6b35;
+  --accent-2: #f06292;
+  --card: #ffffff;
+  --ring: rgba(11, 42, 74, 0.15);
+  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+  --radius: 18px;
+}
 
-  <!-- HERO -->
-  <header class="hero container" id="home">
-    <div class="hero-grid">
-      <div>
-        <h2>I explore data, tell stories, and build evidence-based decisions.</h2>
-        <p>Here I will document my <b>projects</b>, <b>studies</b> and notes on <b>credit risk</b>, <b>analytics</b>, <b>A/B testing</b>, and more.</p>
-        <div class="stats">
-          <div class="stat"><b id="statPosts">0</b><div>Posts</div></div>
-          <div class="stat"><b id="statTags">0</b><div>Topics</div></div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3>What will you find?</h3>
-        <p>Guided studies, mini-projects, reading notes, useful snippets (SQL/Python) and career reflections.</p>
-      </div>
-    </div>
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), var(--bg-2));
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 
-    <!-- CONTROLS -->
-    <div class="controls">
-      <select id="tagFilter">
-        <option value="">All topics</option>
-      </select>
-      <div class="input">
-        <input id="search" type="search" placeholder="Search by title, tag, or content..." />
-      </div>
-    </div>
-  </header>
+/* Navbar */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 75%, #fff 25%);
+  border-bottom: 1px solid #eadfce;
+}
+.nav-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding: 16px 24px; min-height:64px; }
+.brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+.logo-img { width: 32px; height: 32px; object-fit: contain; display:block; }
+.brand h1 { font-size: 18px; margin:0; letter-spacing:0.3px; }
+.nav-actions { display:flex; align-items:center; gap:10px; }
+.link { text-decoration:none; color: var(--primary); font-weight:600; padding:8px 12px; border-radius:10px; }
+.link:hover { background: #efe5d8; }
+.btn {
+  appearance:none; border:1px solid #e9dcca; background: #fff; color: var(--primary);
+  padding: 10px 14px; border-radius: 12px; font-weight:700; cursor:pointer;
+  box-shadow: var(--shadow);
+}
+.btn-primary { background: linear-gradient(135deg, var(--primary), #153e6d); color:#fff; border:none; }
+.btn-primary:hover { filter: brightness(1.05); }
 
-  <!-- LIST VIEW -->
-  <main class="container" id="listView">
-    <div class="grid" id="grid"></div>
-  </main>
+/* Hero */
+.hero { padding: 48px 24px 12px; }
+.hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
+.hero h2 { font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px; }
+.hero p { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+.stats { display:flex; gap:18px; flex-wrap:wrap; margin-top: 18px; }
+.stat { background:#fff; border:1px solid #eadfce; border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); }
+.stat b { font-size: 18px; }
+.hero-card {
+  background: radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
+              radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.2), transparent 60%),
+              #fff;
+  border:1px solid #eadfce; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+}
 
-  <!-- POST VIEW -->
-  <section class="container post-view" id="postView">
-    <button class="btn back" id="backBtn">← Back</button>
-    <header class="post-header">
-      <div class="tags" id="postTags"></div>
-      <h2 id="postTitle">Title</h2>
-      <div class="meta" id="postMeta"></div>
-    </header>
-    <article class="post-content" id="postContent">Loading…</article>
-  </section>
+/* Controls */
+.controls { display:flex; gap: 10px; align-items:center; margin: 26px 0 14px; }
+select, .input input {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border:1px solid #eadfce;
+  font-size:14px;
+}
+.input { flex:1; }
 
-  <!-- ABOUT ME -->
-  <section id="about" class="container about">
-    <div class="about-grid">
-      <img src="assets/foto-flor.jpg" alt="Florencia Messidoro Saavedra" class="about-img">
-      <div>
-        <h2>About Me</h2>
-        <p>I’m Florencia Messidoro Saavedra. I studied Economics and shortly after graduating I started working with data, which led me to pursue a Master in Management & Analytics. But what excites me most is using analytics to solve problems that have a real social impact.</p>
-        <p>Growing up in Argentina 🇦🇷, I saw how economic informality and limited financial education left many people with few ways to save, borrow, or plan for the future. That experience shaped my interest in credit and fintech, where I found a space to combine analytics with building solutions that support financial inclusion.</p>
-        <p>I’m now living in London 🇬🇧. I recently joined Monzo, a company whose focus on accessibility and inclusion strongly resonates with my values.</p>
-        <div class="about-links">
-          <a href="cv/Florencia_Messidoro_Saavedra_CV.pdf" class="btn">Download CV</a>
-          <a href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </section>
+/* Grid */
+.grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+.card { background:#fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.card h4 { margin: 6px 0 6px; font-size: 18px; }
+.meta { color: var(--muted); font-size: 13px; }
 
-  <!-- FOOTER -->
-  <footer>
-    Made with ♥ by Florencia — © <span id="year"></span>
-  </footer>
+/* Post view */
+.post-view { display:none; }
+.post-view.active { display:block; }
+.post-header { padding: 10px 0 16px; }
+.post-header h2 { font-size: 32px; margin: 6px 0; }
+.post-content { background:#fff; border:1px solid #eadfce; border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.post-content img { max-width: 100%; border-radius: 12px; }
+.post-content pre { background:#0b2a4a; color:#fff; padding: 12px; border-radius: 12px; overflow:auto; }
+.back { margin: 10px 0 20px; }
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+/* About Me */
+.about-grid { display:grid; grid-template-columns: 0.8fr 1.2fr; gap:28px; align-items:center; margin-top:64px; margin-bottom:64px; }
+.about-img { width:220px; height:220px; border-radius:50%; object-fit:cover; box-shadow: var(--shadow); }
+.about-links { margin-top:16px; display:flex; gap:12px; }
+@media (max-width: 780px) {
+  .about-grid { grid-template-columns: 1fr; text-align:center; }
+  .about-img { margin:0 auto; }
+}
+
+/* Footer */
+footer { margin: 48px 0 24px; color: var(--muted); text-align:center; }
+html { overflow-y: scroll; }
+
+/* Responsive */
+@media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
