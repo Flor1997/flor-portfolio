@@ -21,81 +21,66 @@
       <div class="nav-actions">
         <a class="link" href="#/">Home</a>
         <a class="link" href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-primary" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
+        <a class="btn btn-primary" id="cvBtn" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-<header class="hero container" id="home">
-  <div class="hero-grid">
-    <div>
-      <h2>My portfolio</h2>
-      <p>In this space, I share projects, case studies, and reflections about data, credit risk, and fintech.</p>
-      <div class="stats">
-        <div class="stat"><b id="statPosts">0</b><div>Posts</div></div>
-        <div class="stat"><b id="statTags">0</b><div>Topics</div></div>
+  <header class="hero container" id="home">
+    <div class="hero-grid">
+      <div>
+        <h2>My portfolio</h2>
+        <p>In this space, I share projects, case studies, and reflections about data, credit risk, and fintech.</p>
+        <div class="stats">
+          <div class="stat"><b id="statPosts">0</b><div>Posts</div></div>
+          <div class="stat"><b id="statTags">0</b><div>Topics</div></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>What will you find?</h3>
+        <p>Hands-on SQL/Python snippets, credit risk concepts explained (PD, LGD, EL), A/B testing guides, fintech and lending case studies, and applications of machine learning in analytics.</p>
       </div>
     </div>
-    <div class="hero-card">
-      <h3>What will you find?</h3>
-      <p>Hands-on SQL/Python snippets, credit risk concepts explained (PD, LGD, EL), 
-         A/B testing guides, fintech and lending case studies, 
-         and applications of machine learning in analytics. 
-      </p>
+
+    <!-- Latest Post -->
+    <div class="latest-post-card" id="latestPostCard">
+      <h3>Latest post</h3>
+      <a id="latestPostLink" href="#">Title</a>
+      <div class="meta" id="latestPostMeta"></div>
     </div>
-  </div>
 
-  <!-- Latest Post Card -->
-  <div class="latest-post-card" id="latestPostCard">
-    <h3>Latest post</h3>
-    <a id="latestPostLink" href="#">Title</a>
-    <div class="meta" id="latestPostMeta"></div>
-  </div>
-
-  <!-- CONTROLS -->
-  <div class="controls">
-    <select id="tagFilter">
-      <option value="">All topics</option>
-    </select>
-    <input id="search" type="search" placeholder="Search by title, tag, or content..." />
-  </div>
-</header>
+    <!-- CONTROLS -->
+    <div class="controls">
+      <select id="tagFilter">
+        <option value="">All topics</option>
+      </select>
+      <input id="search" type="search" placeholder="Search by title, tag, or content..." />
+    </div>
+  </header>
 
   <!-- LIST VIEW -->
   <main class="container" id="listView">
     <div class="grid" id="grid"></div>
   </main>
 
-  <!-- POST VIEW -->
-  <section class="container post-view" id="postView">
-    <button class="btn back" id="backBtn">← Back</button>
-    <header class="post-header">
-      <div class="tags" id="postTags"></div>
-      <h2 id="postTitle">Title</h2>
-      <div class="meta" id="postMeta"></div>
-    </header>
-    <article class="post-content" id="postContent">Loading…</article>
-  </section>
-
   <!-- ABOUT ME -->
   <section id="about" class="container about">
-  <div class="about-grid">
-    <img src="assets/fotoflor.jpeg" alt="Florencia Messidoro Saavedra" class="about-img">
-    <div>
-      <h2>About Me</h2>
-      <p>I’m Florencia Messidoro Saavedra. I studied Economics and shortly after graduating I started working with data, which led me to pursue a Master in Management & Analytics.</p>
-      <p>Growing up in Argentina 🇦🇷, I saw how economic informality and limited access to financial education left people with few options to save, borrow, or plan for the future. That shaped my interest in credit and fintech, where I found a space to combine analytics with building solutions that support financial inclusion.</p>
-      <p>I’m now based in London 🇬🇧, where I recently joined Monzo, focusing on credit risk strategy and improving access to loans.</p>
-      <div class="about-links">
-        <a href="cv/Florencia_Messidoro_Saavedra_CV.pdf" class="btn">Download CV</a>
-        <a href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+    <div class="about-grid">
+      <img src="assets/fotoflor.jpeg" alt="Florencia Messidoro Saavedra" class="about-img">
+      <div>
+        <h2>About Me</h2>
+        <p>I’m Florencia Messidoro Saavedra. I studied Economics and shortly after graduating I started working with data, which led me to pursue a Master in Management & Analytics.</p>
+        <p>Growing up in Argentina 🇦🇷, I saw how economic informality and limited access to financial education left people with few options to save, borrow, or plan for the future. That shaped my interest in credit and fintech, where I found a space to combine analytics with building solutions that support financial inclusion.</p>
+        <p>I’m now based in London 🇬🇧, where I recently joined Monzo, focusing on credit risk strategy and improving access to loans.</p>
+        <div class="about-links">
+          <a href="cv/Florencia_Messidoro_Saavedra_CV.pdf" class="btn">Download CV</a>
+          <a href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- FOOTER -->
   <footer>
     Made with ♥ by Florencia — © <span id="year"></span>
   </footer>
