@@ -37,37 +37,30 @@
         <div class="stat"><b id="statTags">0</b><div>Topics</div></div>
       </div>
     </div>
-
-    <!-- Cajita rosa -->
     <div class="hero-card">
       <h3>What will you find?</h3>
-      <p>
-        Hands-on SQL/Python snippets, credit risk concepts explained (PD, LGD, EL), 
-        A/B testing guides, fintech and lending case studies, 
-        and applications of machine learning in analytics.
+      <p>Hands-on SQL/Python snippets, credit risk concepts explained (PD, LGD, EL), 
+         A/B testing guides, fintech and lending case studies, 
+         and applications of machine learning in analytics. 
       </p>
     </div>
   </div>
 
-  <!-- Latest post (afuera de la hero-card, pero dentro del hero) -->
+  <!-- Latest Post Card -->
   <div class="latest-post-card" id="latestPostCard">
     <h3>Latest post</h3>
     <a id="latestPostLink" href="#">Title</a>
     <div class="meta" id="latestPostMeta"></div>
   </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <select id="tagFilter">
+      <option value="">All topics</option>
+    </select>
+    <input id="search" type="search" placeholder="Search by title, tag, or content..." />
+  </div>
 </header>
-
-
-    <!-- CONTROLS -->
-    <div class="controls">
-      <select id="tagFilter">
-        <option value="">All topics</option>
-      </select>
-      <div class="input">
-        <input id="search" type="search" placeholder="Search by title, tag, or content..." />
-      </div>
-    </div>
-  </header>
 
   <!-- LIST VIEW -->
   <main class="container" id="listView">
