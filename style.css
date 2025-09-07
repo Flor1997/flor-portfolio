@@ -85,7 +85,6 @@ body {
   align-items:center; 
   margin: 26px 0 14px; 
 }
-.input { flex:1; }
 
 /* Dropdown y buscador */
 select, input[type="search"] {
@@ -96,9 +95,9 @@ select, input[type="search"] {
   background: #fff;
   color: var(--text);
   box-shadow: var(--shadow);
-  width: auto;
 }
 
+/* Dropdown */
 select {
   cursor:pointer;
   appearance: none;
@@ -109,11 +108,12 @@ select {
   background-position: right 12px center;
   background-size: 16px 16px;
   padding-right: 36px;
+  width: 160px; /* ancho fijo dropdown */
 }
 
 /* Input buscador */
 input[type="search"] {
-  width: 220px;     /* 👈 ancho fijo más elegante */
+  width: 180px;     /* ancho fijo más chico */
   max-width: 100%;  /* se adapta en mobile */
 }
 
