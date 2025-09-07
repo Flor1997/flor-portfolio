@@ -95,7 +95,6 @@ function handleHash(){
 // ---------- INIT ----------
 async function init(){
   document.getElementById('year').textContent = new Date().getFullYear();
-  $('#backBtn').onclick = () => { history.back(); setTimeout(()=>toggleView('list'), 50); };
   $('#search').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderGrid();});
   $('#tagFilter').addEventListener('change', (e)=>{ activeTag = e.target.value; renderGrid(); });
 
@@ -106,22 +105,23 @@ async function init(){
     (p.tags||[]).forEach(t=>TAGS.add(t)); 
   });
 
+  // llenar filtros
   TAGS.forEach(t => {
     const opt = document.createElement('option');
     opt.value = t; opt.textContent = t;
     $('#tagFilter').appendChild(opt);
   });
 
+  // renderizar grilla
   renderGrid();
-  handleHash();
-  window.addEventListener('hashchange', handleHash);
-  if (POSTS.length > 0) {
-  const latest = POSTS.sort((a,b) => new Date(b.date) - new Date(a.date))[0];
-  document.getElementById('latestPostLink').textContent = latest.title;
-  document.getElementById('latestPostLink').href = `#/post/${latest.slug}`;
-  document.getElementById('latestPostMeta').textContent =
-    `${latest.reading_time || ''} · ${(latest.tags || []).join(', ')}`;
+
+  // mostrar latest post
+  if (POSTS.length > 0){
+    const latest = POSTS.sort((a,b)=> new Date(b.date) - new Date(a.date))[0];
+    $('#latestPostLink').textContent = latest.title;
+    $('#latestPostLink').href = `#/post/${latest.slug}`;
+    $('#latestPostMeta').textContent = `${fmtDate(latest.date)} · ${latest.reading_time || ''}`;
   }
 }
-
 init();
+
