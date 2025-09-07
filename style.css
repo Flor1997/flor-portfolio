@@ -46,7 +46,12 @@ body {
 
 /* Hero */
 .hero { padding: 48px 24px 12px; }
-.hero-grid { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:center; }
+..hero-grid {
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap:28px;
+  align-items:start; /* alinea arriba */
+}
 .hero h2 { font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px; }
 .hero p { color: var(--muted); font-size: 16px; margin: 0 0 20px; }
 .stats { display:flex; gap:18px; flex-wrap:wrap; margin-top: 18px; }
