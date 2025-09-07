@@ -52,12 +52,33 @@ body {
 .stats { display:flex; gap:18px; flex-wrap:wrap; margin-top: 18px; }
 .stat { background:#fff; border:1px solid #eadfce; border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); }
 .stat b { font-size: 18px; }
-.hero-card {
+/* Hero card */
+.hero-card,
+.latest-post-card {
   background: radial-gradient(1100px 600px at 100% -50%, rgba(240, 98, 146, 0.15), transparent 70%),
               radial-gradient(800px 500px at -10% 120%, rgba(255, 107, 53, 0.2), transparent 60%),
               #fff;
-  border:1px solid #eadfce; border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+  border: 1px solid #eadfce;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin-top: 16px;
 }
+.latest-post-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.latest-post-card a {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--primary);
+  text-decoration: none;
+}
+.latest-post-card a:hover {
+  text-decoration: underline;
+}
+
 
 /* Controls */
 .controls { display:flex; gap: 10px; align-items:center; margin: 26px 0 14px; }
