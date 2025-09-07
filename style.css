@@ -86,6 +86,8 @@ body {
   margin: 26px 0 14px; 
 }
 .input { flex:1; }
+
+/* Dropdown y buscador */
 select, input[type="search"] {
   padding: 10px 14px;
   border-radius: 12px;
@@ -94,7 +96,9 @@ select, input[type="search"] {
   background: #fff;
   color: var(--text);
   box-shadow: var(--shadow);
+  width: auto;
 }
+
 select {
   cursor:pointer;
   appearance: none;
@@ -107,10 +111,10 @@ select {
   padding-right: 36px;
 }
 
+/* Input buscador */
 input[type="search"] {
-  flex: 1;
-  min-width: 260px; /* 👈 asegura que la palabra "content" entre bien */
-  max-width: 100%;  /* para que no se rompa en pantallas chicas */
+  width: 220px;     /* 👈 ancho fijo más elegante */
+  max-width: 100%;  /* se adapta en mobile */
 }
 
 
