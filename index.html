@@ -8,8 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/logofinal.png" />
-  <!-- Acá importás el CSS externo -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- NAVBAR -->
@@ -21,9 +20,9 @@
       </a>
       <div class="nav-actions">
         <a class="link" href="#/">Home</a>
-        <a class="link" href="https://www.linkedin.com/in/tu-linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="link" href="#/contact">Contact</a>
-        <a class="btn btn-primary" id="cvBtn" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
+        <a class="btn btn-primary" href="cv/Florencia_Messidoro_Saavedra_CV.pdf" download>Download CV</a>
       </div>
     </div>
   </nav>
@@ -50,7 +49,9 @@
       <select id="tagFilter">
         <option value="">All topics</option>
       </select>
-      <input id="search" type="search" placeholder="Search..." />
+      <div class="input">
+        <input id="search" type="search" placeholder="Search by title, tag, or content..." />
+      </div>
     </div>
   </header>
 
@@ -58,6 +59,17 @@
   <main class="container" id="listView">
     <div class="grid" id="grid"></div>
   </main>
+
+  <!-- POST VIEW -->
+  <section class="container post-view" id="postView">
+    <button class="btn back" id="backBtn">← Back</button>
+    <header class="post-header">
+      <div class="tags" id="postTags"></div>
+      <h2 id="postTitle">Title</h2>
+      <div class="meta" id="postMeta"></div>
+    </header>
+    <article class="post-content" id="postContent">Loading…</article>
+  </section>
 
   <!-- ABOUT ME -->
   <section id="about" class="container about">
@@ -70,12 +82,13 @@
         <p>I’m now living in London 🇬🇧. I recently joined Monzo, a company whose focus on accessibility and inclusion strongly resonates with my values.</p>
         <div class="about-links">
           <a href="cv/Florencia_Messidoro_Saavedra_CV.pdf" class="btn">Download CV</a>
-          <a href="https://www.linkedin.com/in/tu-linkedin" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/florencia-messidoro-saavedra/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     Made with ♥ by Florencia — © <span id="year"></span>
   </footer>
