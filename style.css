@@ -141,14 +141,15 @@ html { overflow-y: scroll; }
 /* Latest Post Card */
 .latest-post-card {
   margin-top: 24px;
+  max-width: 420px;
   background: radial-gradient(
       800px 500px at -10% 120%,
-      rgba(255, 107, 53, 0.15),
+      rgba(255, 107, 53, 0.1),
       transparent 60%
     ),
     radial-gradient(
       1100px 600px at 100% -50%,
-      rgba(240, 98, 146, 0.2),
+      rgba(240, 98, 146, 0.15),
       transparent 70%
     ),
     #fff;
@@ -173,7 +174,12 @@ html { overflow-y: scroll; }
   margin-bottom: 6px;
 }
 
+.latest-post-card a:hover {
+  color: var(--accent-2); /* rosa más fuerte al hover */
+}
+
 .latest-post-card .meta {
   font-size: 14px;
   color: var(--muted);
 }
+
