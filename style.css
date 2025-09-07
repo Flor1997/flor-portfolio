@@ -137,3 +137,38 @@ html { overflow-y: scroll; }
 /* Responsive */
 @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero-grid { grid-template-columns: 1fr; } }
 @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } .nav-inner { flex-wrap:wrap; } }
+
+.latest-post-card {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #ffeaf3, #fddde9); /* rosa suave */
+  border: 1px solid #ffcfe3;
+  box-shadow: var(--shadow);
+}
+
+.latest-post-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.latest-post-card a {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.latest-post-card a:hover {
+  text-decoration: underline;
+}
+
+.latest-post-card .meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
